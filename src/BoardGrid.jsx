@@ -14,6 +14,7 @@ export default class BoardGrid extends Component {
       grid: Array(9).fill(null),
       currentPlayer: PLAYER_1
     };
+    this.state.status = this.getStatus();
   }
 
   getNextPlayer() {
@@ -22,12 +23,16 @@ export default class BoardGrid extends Component {
   }
 
   handleClick(index) {
-      const grid = [...this.state.grid];
-      grid[index] = this.state.currentPlayer;
+    const grid = [...this.state.grid];
+    grid[index] = this.state.currentPlayer;
+    this.setState(() => ({
+      grid,
+      currentPlayer: this.getNextPlayer(),
+    }), () => {
       this.setState({
-        grid,
-        currentPlayer: this.getNextPlayer()
-      });
+        status: this.getStatus()
+      })
+    });
   }
 
   renderCell(index) {
@@ -37,11 +42,43 @@ export default class BoardGrid extends Component {
     />;
   }
 
+  isBoardFull() {
+    return this.state.grid.every(cell => cell != null);
+  }
+
+  getWinner() {
+    const grid = this.state.grid;
+    // 0 == 1 == 2; 3 == 4 == 5; 6 == 7 == 8
+    for (let index = 0; index < 9; index += 3) {
+      if (grid[index] != null && grid[index] === grid[index + 1] && grid[index + 1] === grid[index + 2]) return grid[index];
+    }
+    // 0 == 3 == 6
+    for (let index = 0; index < 9; index += 3) {
+      if (grid[index] != null && grid[index] === grid[index + 3] && grid[index + 3] === grid[index + 6]) return grid[index];
+    }
+
+    if (grid[4] != null && (
+      (grid[0] === grid[4] && grid[4] === grid[8]) ||
+      (grid[2] === grid[4] && grid[4] === grid[6])
+    )) return grid[4];
+
+    return null;
+  }
+
+  getStatus() {
+    const winner = this.getWinner();
+    if (winner) {
+      return `Winner: ${winner}`;
+    } else if(this.isBoardFull()) {
+      return 'Game Over - No winner';
+    }
+    return `Next player: ${this.getNextPlayer()}`
+  }
+
   render() {
-    const status = `Next player: ${this.getNextPlayer()}`;
     return (
       <div>
-        <div className="status">{status}</div>
+        <div className="status">{this.state.status}</div>
         <div className="board-row">
           { this.renderCell(0) }
           { this.renderCell(1) }
