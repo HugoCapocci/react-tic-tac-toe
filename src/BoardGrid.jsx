@@ -3,18 +3,31 @@ import Cell from './Cell';
 
 import './BoardGrid.css';
 
+const PLAYER_1 = 'X';
+const PLAYER_2 = 'O';
+
+
 export default class BoardGrid extends Component {
   constructor(props) {
     super(props);
     this.state = {
       grid: Array(9).fill(null),
+      currentPlayer: PLAYER_1
     };
+  }
+
+  getNextPlayer() {
+    if (this.state.currentPlayer === PLAYER_1) return PLAYER_2;
+    return PLAYER_1;
   }
 
   handleClick(index) {
       const grid = [...this.state.grid];
-      grid[index] = 'X';
-      this.setState({ grid });
+      grid[index] = this.state.currentPlayer;
+      this.setState({
+        grid,
+        currentPlayer: this.getNextPlayer()
+      });
   }
 
   renderCell(index) {
@@ -25,7 +38,7 @@ export default class BoardGrid extends Component {
   }
 
   render() {
-    const status = 'Next player: X';
+    const status = `Next player: ${this.getNextPlayer()}`;
     return (
       <div>
         <div className="status">{status}</div>
