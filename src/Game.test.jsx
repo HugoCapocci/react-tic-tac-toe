@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import BoardGrid from './BoardGrid';
+import Game from './Game';
 
-describe('BoardGrid tests', () => {
+describe('Game tests', () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<BoardGrid />);
+    wrapper = shallow(<Game />);
   });
 
   describe('isBoardFull', () => {
@@ -14,7 +14,12 @@ describe('BoardGrid tests', () => {
     });
 
     it('Should return true if board is full', () => {
-      wrapper.setState({ grid: Array(9).fill('Y') });
+      wrapper.setState({
+        history: [
+          { grid: Array(9).fill('Y') }
+        ],
+        currentStep: 0
+      });
 
       expect(wrapper.instance().isBoardFull()).toBe(true);
     });
@@ -26,8 +31,11 @@ describe('BoardGrid tests', () => {
     });
 
     it('Should return X when first player has fullfill firt row', () => {
-      wrapper.setState({
-        grid: Array(3).fill('X')
+       wrapper.setState({
+        history: [
+          { grid: Array(3).fill('X') }
+        ],
+        currentStep: 0
       });
 
       expect(wrapper.instance().getWinner()).toBe('X');
@@ -35,11 +43,16 @@ describe('BoardGrid tests', () => {
 
     it('Should return O when second player has fullfill firt column', () => {
       wrapper.setState({
-        grid: [
-          'O', null, null,
-          'O', null, null,
-          'O', null, null
-        ]
+        history: [
+          {
+            grid: [
+              'O', null, null,
+              'O', null, null,
+              'O', null, null
+            ]
+          }
+        ],
+        currentStep: 0
       });
 
       expect(wrapper.instance().getWinner()).toBe('O');
@@ -47,11 +60,16 @@ describe('BoardGrid tests', () => {
 
     it('Should return X when first player has fullfill diagonal', () => {
       wrapper.setState({
-        grid: [
-          'O', null, 'X',
-          'O', 'X', null,
-          'X', null, 'O'
-        ]
+        history: [
+          {
+            grid: [
+              'O', null, 'X',
+              'O', 'X', null,
+              'X', null, 'O'
+            ]
+          }
+        ],
+        currentStep: 0
       });
 
       expect(wrapper.instance().getWinner()).toBe('X');
