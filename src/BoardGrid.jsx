@@ -14,6 +14,7 @@ export default class BoardGrid extends Component {
       grid: Array(9).fill(null),
       currentPlayer: PLAYER_1
     };
+    this.state.status = this.getStatus();
   }
 
   getNextPlayer() {
@@ -22,12 +23,16 @@ export default class BoardGrid extends Component {
   }
 
   handleClick(index) {
-      const grid = [...this.state.grid];
-      grid[index] = this.state.currentPlayer;
+    const grid = [...this.state.grid];
+    grid[index] = this.state.currentPlayer;
+    this.setState(() => ({
+      grid,
+      currentPlayer: this.getNextPlayer(),
+    }), () => {
       this.setState({
-        grid,
-        currentPlayer: this.getNextPlayer()
-      });
+        status: this.getStatus()
+      })
+    });
   }
 
   renderCell(index) {
@@ -37,11 +42,42 @@ export default class BoardGrid extends Component {
     />;
   }
 
+  isBoardFull() {
+    return this.state.grid.every(cell => cell != null)
+  }
+
+  getWinner() {
+    const grid = this.state.grid;
+    for (let line = 0; line < 9; line += 3) {
+      if (grid[line] && grid[line] === grid[line + 1] && grid[line + 1] === grid[line + 2]) return grid[line];
+    }
+
+    for (let row = 0; row < 9; row += 3) {
+      if (grid[row] && grid[row] === grid[row + 3] && grid[row + 3] === grid[row + 6]) return grid[row];
+    }
+
+    if (grid[4] && (
+      (grid[0] === grid[4] && grid[4] === grid[8]) ||
+      (grid[2] === grid[4] && grid[4] === grid[6])
+    )) return grid[4];
+
+    return null;
+  }
+
+  getStatus() {
+    const winner = this.getWinner();
+    if (winner) {
+      return `Winner: ${winner}`;
+    } else if(this.isBoardFull()) {
+      return 'Game Over - No winner';
+    }
+    return `Next player: ${this.getNextPlayer()}`
+  }
+
   render() {
-    const status = `Next player: ${this.getNextPlayer()}`;
     return (
       <div>
-        <div className="status">{status}</div>
+        <div className="status">{this.state.status}</div>
         <div className="board-row">
           { this.renderCell(0) }
           { this.renderCell(1) }
