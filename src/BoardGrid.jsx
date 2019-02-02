@@ -11,19 +11,19 @@ export default class BoardGrid extends Component {
       <div>
         <div className="status">{status}</div>
         <div className="board-row">
-          <Cell />
-          <Cell />
-          <Cell />
+          <Cell value={0} />
+          <Cell value={1} />
+          <Cell value={2} />
         </div>
         <div className="board-row">
-          <Cell />
-          <Cell />
-          <Cell />
+          <Cell value={3} />
+          <Cell value={4} />
+          <Cell value={5} />
         </div>
         <div className="board-row">
-          <Cell />
-          <Cell />
-          <Cell />
+          <Cell value={6} />
+          <Cell value={7} />
+          <Cell value={8} />
         </div>
       </div>
     );
