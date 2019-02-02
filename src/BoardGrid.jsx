@@ -24,6 +24,7 @@ export default class BoardGrid extends Component {
 
   handleClick(index) {
     const grid = [...this.state.grid];
+    if(grid[index] || this.getWinner()) return;
     grid[index] = this.state.currentPlayer;
     this.setState(() => ({
       grid,
