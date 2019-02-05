@@ -1,5 +1,5 @@
 import React, {Component } from 'react';
-import Carre from './carre.js';
+import Carre from './carre.jsx';
 
 export default class plateau extends Component {
 constructor(props) {

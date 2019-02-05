@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 // COMPOSANTS
-import Jeu from './jeu.js';
+import Jeu from './jeu.jsx';
 
 class App extends Component {
   render() {

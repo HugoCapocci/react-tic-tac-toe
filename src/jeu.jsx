@@ -1,5 +1,5 @@
 import React, {Component } from 'react';
-import Plateau from './plateau.js';
+import Plateau from './plateau.jsx';
 
 export default class Jeu extends Component {
   render() {
