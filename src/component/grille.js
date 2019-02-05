@@ -12,6 +12,7 @@ export default class Grille extends Component {
                 null, null, null
             ],
             player : "X",
+
         }
     }
 
@@ -22,7 +23,7 @@ export default class Grille extends Component {
                 let player = '';
                 values[index] = prevState.player;
                 if (prevState.values[index]!=null){
-
+                    return null;
                 }
                 if (prevState.player == 'X')
                 {
@@ -44,19 +45,19 @@ export default class Grille extends Component {
         return (
             <div>
                 <div className='boardRow'>
-                    <Cell value={this.state.values[0]} index={"0"} Affp={()=>this.AffP(0)}/>
-                    <Cell value={this.state.values[1]} index={"1"} Affp={()=>this.AffP(1)}/>
-                    <Cell value={this.state.values[2]} index={"2"} Affp={()=>this.AffP(2)}/>
+                    <Cell value={this.state.values[0]} Affp={()=>this.AffP(0)}/>
+                    <Cell value={this.state.values[1]} Affp={()=>this.AffP(1)}/>
+                    <Cell value={this.state.values[2]} Affp={()=>this.AffP(2)}/>
                 </div>
                 <div className='boardRow'>
-                    <Cell value={this.state.values[3]} index={"3"} Affp={()=>this.AffP(3)}/>
-                    <Cell value={this.state.values[4]} index={"4"} Affp={()=>this.AffP(4)}/>
-                    <Cell value={this.state.values[5]} index={"5"} Affp={()=>this.AffP(5)}/>
+                    <Cell value={this.state.values[3]} Affp={()=>this.AffP(3)}/>
+                    <Cell value={this.state.values[4]} Affp={()=>this.AffP(4)}/>
+                    <Cell value={this.state.values[5]} Affp={()=>this.AffP(5)}/>
                 </div>
                 <div className='boardRow'>
-                    <Cell value={this.state.values[6]} index={"6"} Affp={()=>this.AffP(6)}/>
-                    <Cell value={this.state.values[7]} index={"7"} Affp={()=>this.AffP(7)}/>
-                    <Cell value={this.state.values[8]} index={"8"} Affp={()=>this.AffP(8)}/>
+                    <Cell value={this.state.values[6]} Affp={()=>this.AffP(6)}/>
+                    <Cell value={this.state.values[7]} Affp={()=>this.AffP(7)}/>
+                    <Cell value={this.state.values[8]} Affp={()=>this.AffP(8)}/>
                 </div>
             </div>
         );
