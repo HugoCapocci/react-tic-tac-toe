@@ -5,7 +5,7 @@ export default class Case extends Component {
 
     render() {
         return (
-            <button className="cell" onClick={() => { this.props.handleClick() }}>
+            <button className={"cell" + (this.props.value ? ' selector' : ' pointer')} onClick={() => { this.props.handleClick() }}>
                 {this.props.value}
             </button>
         )

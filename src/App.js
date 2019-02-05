@@ -7,17 +7,30 @@ class App extends Component {
     super(props);
     this.state = {
       cells: [
-        null, 'X', 'X',
-        null, 'X', null,
-        null, null, 'X'
-      ]
+        null, null, null,
+        null, null, null,
+        null, null, null
+      ],
+      player: "X"
     }
   }
   
   handleClick = (index) => {
     this.setState(prevState => {
       const cells = [...prevState.cells];
-      cells[index] = 'X';
+      if(!cells[index]) {
+        cells[index] = prevState.player;
+        if(prevState.player === "X") {
+          this.setState({
+            player: "O",
+          })
+        }
+        else {
+          this.setState({
+            player: "X",
+          })
+        }
+      }
       return {
         cells
       }
@@ -28,7 +41,7 @@ class App extends Component {
     return (
       <div className="App">
 
-      <h2>Next player: X</h2>
+      <h2>Next player: {this.state.player}</h2>
 
         <header className="App-header">
 

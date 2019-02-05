@@ -23,5 +23,12 @@
   padding: 0;
   text-align: center;
   width: 34px;
+}
+
+.pointer {
   cursor: pointer;
+}
+
+.selector {
+  cursor: default;
 }
