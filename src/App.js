@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Board from "./Board";
+import Game from "./Game";
 
 class App extends Component {
   render() {
@@ -17,8 +19,8 @@ class App extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
           </a>
+            <Game/>
         </header>
       </div>
     );
