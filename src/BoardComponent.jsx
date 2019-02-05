@@ -14,6 +14,7 @@ export default class BoardComponent extends Component{
     handleClick(index) {
         const grid = [...this.state.grid];
         grid[index] = this.state.player;
+
         if(this.state.player === 'X'){
             this.setState({player: 'O'});
         }
