@@ -19,26 +19,29 @@ export default class Plateau extends Component {
             this.setState(prevState =>{
                 const cells= [...prevState.cells];
                 if(!cells[index]){
-                    cells[index]= this.state.player;
-                    if(this.state.player=="X")
+                    cells[index]= prevState.player;
+                    if(prevState.player=="X")
                     {
                         this.setState({ player: 'O'});
                         
                     }else{
                         this.setState({ player: 'X'});
                     }
-                }else{
-
                 }
                 return {
                     cells
                 }
             })
             
-      }
-  render() {
-       
-      
+    }
+    isBoardFull(){
+        // to DO
+        // renvoyé true si le tableau est full
+    }
+    getWinner(){
+        // retourne le gagnant
+    }
+  render() {  
     return (
         <div className="App">
         
