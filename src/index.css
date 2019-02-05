@@ -26,4 +26,5 @@ code {
     text-align: center;
     height: 46px;
     width: 46px;
+    cursor: pointer;
 }
