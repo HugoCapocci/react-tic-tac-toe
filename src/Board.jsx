@@ -12,7 +12,14 @@ export default class Board extends React.Component {
 
   handleClick(i) {
     const squares = this.state.squares.slice();
+    
+    if(squares[i] != null){
+      return;
+    }
+    
     squares[i] = this.state.xIsNext ? 'X' : 'O';
+    document.getElementById(i).style.cursor = "default";
+    
     this.setState({
       squares: squares,
       xIsNext: !this.state.xIsNext,
@@ -22,6 +29,7 @@ export default class Board extends React.Component {
   renderSquare(i) {
     return (
       <Square
+        id = {i}
         value={this.state.squares[i]}
         onClick={() => this.handleClick(i)}
       />
