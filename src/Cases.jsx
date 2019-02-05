@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
+import './Cases.css';
 import './App.css';
 
 export default class Cases extends Component {
 
     render()
     {
-        return <div className="cases">{ this.props.valeur }</div>
+        return (
+        <button className="cases" onClick={this.props.onClick}>
+            { this.props.value }
+        </button>
+        );
     }
 }
