@@ -16,6 +16,14 @@ export default class Grille extends Component {
         }
     }
 
+    isNull(value){
+        return value==null;
+    }
+
+    isBoardFull(){
+        return this.state.values.every(this.IsNull);
+    }
+
     AffP = (index) => {
         this.setState(
             prevState => {
