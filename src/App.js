@@ -1,29 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Case from './Case.js';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+
+      <h2>Next player: X</h2>
+
         <header className="App-header">
 
           <div>
-            <button className="cell"></button>
-            <button className="cell"></button>
-            <button className="cell"></button>
+            <Case />
+            <Case />
+            <Case />
           </div>
           
           <div>
-            <button className="cell"></button>
-            <button className="cell"></button>
-            <button className="cell"></button>
+            <Case />
+            <Case />
+            <Case />
           </div>
 
           <div>
-            <button className="cell"></button>
-            <button className="cell"></button>
-            <button className="cell"></button>
+            <Case />
+            <Case />
+            <Case />
           </div>
 
         </header>
