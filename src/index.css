@@ -28,3 +28,7 @@ code {
   width: 70px;
   cursor: pointer;
 }
+
+.inactive{
+  background-color: red;
+}

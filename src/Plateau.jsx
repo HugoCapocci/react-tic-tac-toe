@@ -7,17 +7,25 @@ export default class Plateau extends React.Component {
     super(props);
     this.state = {
       cases: Array(9).fill(null),
+      xIsNext: true,
     };
   }
 
   handleClick(i) {
     const cases = this.state.cases.slice();
-    cases[i] = 'X';
-    this.setState({cases: cases});
+
+    if(cases[i] != null){
+      return;
+    }
+    cases[i] = this.state.xIsNext ? 'X' : 'O';
+    this.setState({
+      cases:cases,
+      xIsNext: !this.state.xIsNext,
+    });
   }
 
   renderCase(i) {    
-    (
+    return (
       <Case
         value={this.state.cases[i]}
         onClick={() => this.handleClick(i)}
@@ -26,7 +34,7 @@ export default class Plateau extends React.Component {
   }
 
   render() {
-    const status = 'Prochain joueur : X';
+    const status = 'Prochain Joueur: ' + (this.state.xIsNext ? 'X' : 'O');;
 
     return (
       <div>

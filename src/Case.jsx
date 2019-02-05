@@ -12,4 +12,4 @@ export default class Case extends React.Component {
       </button>
     );
   }
-}
+} 

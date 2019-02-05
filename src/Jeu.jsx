@@ -15,5 +15,5 @@ export default class Jeu extends Component {
       </div>
     );
   }
-}
+} 
   
