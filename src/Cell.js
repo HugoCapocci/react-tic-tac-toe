@@ -16,7 +16,7 @@ class Cell extends Component {
     };
 
     handleClick = () => {
-        this.setState({value: 'X'})
+        this.setState({value: this.props.value})
     }
 
   render() {
