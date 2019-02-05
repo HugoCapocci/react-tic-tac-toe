@@ -4,7 +4,7 @@ import Cell from "./grille";
 export default class Grille extends Component {
     render() {
         return (
-            <button className='cell'></button>
+            <button className='cell'>{this.props.value}</button>
         );
     }
 }
