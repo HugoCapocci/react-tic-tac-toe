@@ -34,10 +34,14 @@
 .cell {
   background: #fff;
   border: 1px solid #999;
-  height: 50px;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 70px;
+  height: 70px;
   margin-right: -1px;
-  margin-top: -4px;
+  margin-top: -5px;
   padding: 0;
-  width: 50px;
-
+  text-align: center;
+  width: 70px;
+  cursor: pointer;
 }
