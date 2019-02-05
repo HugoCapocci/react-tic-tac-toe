@@ -30,3 +30,14 @@
     transform: rotate(360deg);
   }
 }
+
+.cell {
+  background: #fff;
+  border: 1px solid #999;
+  height: 50px;
+  margin-right: -1px;
+  margin-top: -4px;
+  padding: 0;
+  width: 50px;
+
+}
