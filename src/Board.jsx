@@ -1,13 +1,42 @@
 import React, {Component} from 'react';
-import Case from './Case.jsx';
+import Cases from './Cases.jsx';
 export default class Board extends Component {
+
+
+    constructor(props){
+
+        super(props);
+        this.state= {
+            grid:Array(9).fill(null),
+            player:'X',
+        };
+    }
+
+    handleClick(index) {
+        const grid = [...this.state.grid];
+        //grid[index] = 'X';
+        grid[index] =this.state.player;
+        if(this.state.player === 'X'){
+            this.setState({player:'O'});
+        }
+        else{
+            this.setState({player:'X'});
+
+        }
+        this.setState({ grid });
+    }
+
     
     renderCase(i){
 
-        return <Case value={i} />;
+        return <Cases value={this.state.grid[i]}
+
+        onClick={() => this.handleClick(i)}
+
+        />;
     }
     render() {
-        const tour = 'Next Player : X';
+        const tour = 'Next Player : '+ this.state.player;
 
         return (
             <div>
