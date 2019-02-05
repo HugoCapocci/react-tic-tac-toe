@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Board from "./Board";
 
 class App extends Component {
   render() {
@@ -19,7 +20,9 @@ class App extends Component {
           >
             Learn React
           </a>
+          <Board/>
         </header>
+
       </div>
     );
   }
