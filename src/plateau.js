@@ -1,46 +1,46 @@
 import React, {Component } from 'react';
+import Carre from './carre.js';
 
 export default class plateau extends Component {
+constructor(props) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+    };
+  }
 
-	constructor(props) {
-		super(props);
-		this.state = { squares: Array(9).fill(null) };
-	}
+  handleClick(i) {
+    const squares = this.state.squares.slice();
+    squares[i] = 'X';
+    this.setState({squares: squares});
+  }
 
-	renderTd(i) {
+  renderTd(i) {
     return (
-      <Square
+      <Carre
         value={this.state.squares[i]}
         onClick={() => this.handleClick(i)}
       />
     );
-	}
+  }
 
   render() {
     const status = 'Next player: X';
 
-    return (
-      <div id="plateau">
-        <div id="status">{status}</div>
-	        <table>
-	          <tr>
-		          {this.renderTd(0)}
-		          {this.renderTd(1)}
-		          {this.renderTd(2)}
-	          </tr>
-	          <tr>
-		          {this.renderTd(3)}
-		          {this.renderTd(4)}
-		          {this.renderTd(5)}
-	          </tr>
-	          <tr>
-		          {this.renderTd(6)}
-		          {this.renderTd(7)}
-		          {this.renderTd(8)}
-	          </tr>
-	        </table>
-      </div>
-    );
+		return (
+		  <div>
+		    <div className="status">{status}</div>
+		    <div className="board-row">
+		      {this.renderTd(0)}{this.renderTd(1)}{this.renderTd(2)}
+		    </div>
+		    <div className="board-row">
+		      {this.renderTd(3)}{this.renderTd(4)}{this.renderTd(5)}
+		    </div>
+		    <div className="board-row">
+		      {this.renderTd(6)}{this.renderTd(7)}{this.renderTd(8)}
+		    </div>
+		  </div>
+		);
   }
 
 }

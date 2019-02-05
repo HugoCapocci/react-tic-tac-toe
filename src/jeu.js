@@ -1,31 +1,18 @@
 import React, {Component } from 'react';
+import Plateau from './plateau.js';
 
-export default class MyComponent extends Component {
-
-	constructor(props){
-		super();
-		// this.res = props.value.split('').join(' ').toUpperCase();
-		this.res = props.value.split(' ').join('\n');
-	}
-
-	render(){
-		// let res = "";
-		// for (let i = 0; i < this.props.value.length; i++) {
-		// 	{
-		// 		res += this.props.value[i].toUpperCase() + " ";
-		// 	}
-		// }
-
-		// const res2  = this.props.value.split('').join(' ').toUpperCase();
-
-		// let res = "";
-		// for (let i = 0; i < this.props.value.length; i++) {
-		// 	{
-		// 		res += this.props.value[i].toUpperCase() + " ";
-		// 	}
-		// }
-
-		return <p>{this.res}</p>
-	}
-
+export default class Jeu extends Component {
+  render() {
+    return (
+      <div class="plateau">
+        <div class="plateau-board">
+          <Plateau/>
+        </div>
+        <div class="plateau-info">
+          <div>{/* status */}</div>
+          <ol>{/* TODO */}</ol>
+        </div>
+      </div>
+    );
+  }
 }
