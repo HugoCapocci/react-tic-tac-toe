@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Case from './Case';
+import index from './index'
 
 export default class Plateau extends React.Component {
   
@@ -37,8 +38,34 @@ export default class Plateau extends React.Component {
     );
   }
 
+  calculateWinner(cases) {
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+    for (let i = 0; i < lines.length; i++) {
+      const [a, b, c] = lines[i];
+      if (cases[a] && cases[a] === cases[b] && cases[a] === cases[c]) {
+        return cases[a];
+      }
+    }
+    return null;
+  }
+
   render() {
-    const status = 'Prochain Joueur: ' + (this.state.xIsNext ? 'X' : 'O');;
+    const winner = calculateWinner(this.state.cases);
+    let status;
+    if (winner) {
+      status = 'Vainqueur: ' + winner;
+    } else {
+      status = 'Prochain Joueur: ' + (this.state.xIsNext ? 'X' : 'O');
+    }
 
     return (
       <div>
