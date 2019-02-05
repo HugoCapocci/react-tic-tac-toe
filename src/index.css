@@ -12,3 +12,34 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+#titre{
+    position: relative;
+    display: flex;
+}
+
+#plateau{
+
+}
+
+.cell{
+	list-style-type: none;
+	background: #FFF;
+	height: 34px;
+	width: 34px;
+	border: 1px solid #999;
+	float: left;
+	margin-right: -1px;
+	margin-top: -1px;
+	padding: 0;
+}
+
+/*
+1 jeu, 2 joueurs
+
+1 plateau 9 cases
+
+3 niveaux de composants => 
+	Jeu composé d'un tableau
+	Plateau composé de case
+*/

@@ -2,24 +2,35 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+// COMPOSANTS
+// import Plateau from './plateau.js';
+// import Jeu     from './jeu.js';
+// import Case    from './case.js';
+
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <p id="titre">Next player: X</p>
+        <div id="plateau">
+          <table>
+            <tr>
+              <td class="cell"></td>
+              <td class="cell"></td>
+              <td class="cell"></td>
+            </tr>
+            <tr>
+              <td class="cell"></td>
+              <td class="cell"></td>
+              <td class="cell"></td>
+            </tr>
+            <tr>
+              <td class="cell"></td>
+              <td class="cell"></td>
+              <td class="cell"></td>
+            </tr>
+          </table>
+        </div>
       </div>
     );
   }
