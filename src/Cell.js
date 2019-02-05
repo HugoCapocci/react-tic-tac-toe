@@ -4,25 +4,17 @@ import './App.css';
 
 class Cell extends Component {  
 
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //       value: null,
-    //     };
-    // }
-
-    state = {
-        value : null,
-    };
-
-    handleClick = () => {
-        this.setState({value: this.props.value})
+    constructor(props) {
+        super(props);
+        this.state = {
+          value: null,
+        };
     }
 
   render() {
     return (
-         <button class="cell" onClick={() => {this.handleClick()}}>
-            {this.state.value}
+         <button class="cell" onClick={() => this.props.onClick()}>
+            {this.props.value}
         </button>
     );
   }
