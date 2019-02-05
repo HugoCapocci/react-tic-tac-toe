@@ -3,19 +3,15 @@ import Cell from "./grille";
 
 export default class Grille extends Component {
 
-    state = {
-        InValue : null,
-    }
 
 
-    AffP = () => {
-       this.setState({InValue:"X"});
-    }
+
+
 
     render() {
         return (
 
-            <button onClick={this.AffP} className='cell'>{this.state.InValue}</button>
+            <button onClick={this.props.Affp} className='cell'>{this.props.value}</button>
         );
     }
 }
