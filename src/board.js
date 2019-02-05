@@ -9,19 +9,31 @@ class Board extends Component {
     super(props);
     this.state = {
       cells: Array(9).fill(null),
+      player: 'X',
     }
   }
 
   handleClick(i) {
     const cells = this.state.cells.slice();
-    cells[i] = 'X';
-    this.setState({ cells: cells });
+    if (cells[i] === null) {
+      cells[i] = this.state.player;
+      this.setState({ cells: cells });
+      if (this.state.player == 'X') {
+        this.setState({ player: "O" })
+      } else {
+        this.setState({ player: "X" })
+      }
+
+    } else {
+      alert('Case déjà cochée');
+    }
   }
 
   renderCell(i, x) {
     return (
       <Cell
-        value={this.state.cells[i]} 
+        style={this.state.style}
+        value={this.state.cells[i]}
         index={x}
         onClick={() => this.handleClick(x)} />
     );
@@ -30,7 +42,7 @@ class Board extends Component {
   render() {
     return (
       <div className="App">
-        <h3>Next Player : X</h3>
+        <h3>Next Player : {this.state.player}</h3>
         <div>
           {this.renderCell(0, 0)}
           {this.renderCell(1, 1)}
