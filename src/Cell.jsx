@@ -12,8 +12,8 @@ export default class Cell extends Component {
 
     render() {
         return (
-            <button className="cell"  onClick={() => this.setState({value: 'X'})}>
-                {this.state.value}
+            <button className="cell"  onClick={() => this.props.onClick()}>
+                {this.props.value}
             </button>
         );
     }
