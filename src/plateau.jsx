@@ -6,26 +6,29 @@ constructor(props) {
     super(props);
     this.state = {
       squares: Array(9).fill(null),
+      xIsNext: true,
     };
   }
 
   handleClick(i) {
     const squares = this.state.squares.slice();
-    squares[i] = 'X';
-    this.setState({squares: squares});
+    if(squares[i] != null) return;
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    document.getElementById(i).style.cursor ="default";
+    this.setState({
+      squares: squares,
+      xIsNext: !this.state.xIsNext,
+    });
   }
 
   renderTd(i) {
     return (
-      <Carre
-        value={this.state.squares[i]}
-        onClick={() => this.handleClick(i)}
-      />
+      <Carre id={i} value={this.state.squares[i]} onClick={() => this.handleClick(i)} />
     );
   }
 
   render() {
-    const status = 'Next player: X';
+    const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
 
 		return (
 		  <div>

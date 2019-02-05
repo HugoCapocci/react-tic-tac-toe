@@ -65,6 +65,10 @@ ol, ul {
 	cursor: pointer;
 }
 
+/*.cell.actif:hover{
+  cursor: default!important;
+}
+*/
 .square:focus {
   outline: none;
 }
