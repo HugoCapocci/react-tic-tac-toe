@@ -27,8 +27,14 @@
   margin-top: -1px;
   text-align: center;
   width: 34px;
-  cursor: pointer;
+  
 }
 
+.pointer{
+  cursor: pointer;
+}
+.selector{
+  cursor: default;
+}
 
 

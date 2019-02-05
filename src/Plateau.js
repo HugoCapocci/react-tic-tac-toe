@@ -5,21 +5,36 @@ import './App.css';
 
 
 export default class Plateau extends Component {
+    
+    
     state={
       cells : [
-          null,  'X', 'X',
-          null, 'X', null,
-          null, null, 'X'
+          null,  null, null,
+          null, null, null,
+          null, null, null
       ],
+      player: 'X',
     }
     handleClick = (index)  => {
             this.setState(prevState =>{
                 const cells= [...prevState.cells];
-                cells[index]= 'X';
+                if(!cells[index]){
+                    cells[index]= this.state.player;
+                    if(this.state.player=="X")
+                    {
+                        this.setState({ player: 'O'});
+                        
+                    }else{
+                        this.setState({ player: 'X'});
+                    }
+                }else{
+
+                }
                 return {
                     cells
                 }
             })
+            
       }
   render() {
        
@@ -28,7 +43,7 @@ export default class Plateau extends Component {
         <div className="App">
         
             <header className="App-header">
-                <h2>Next player : X</h2>    
+                <h2>Next player : { this.state.player }</h2>    
                 <div >
                     < Case value={ this.state.cells[0] } handleClick={ () => this.handleClick(0) } />
                     < Case value={ this.state.cells[1] } handleClick={ () => this.handleClick(1) }  />
