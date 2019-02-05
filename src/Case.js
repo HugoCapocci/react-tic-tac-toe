@@ -4,9 +4,11 @@ import './App.css';
 
 
 export default class Case extends Component {
+ 
   render() {
+     
     return (
-        <button className="cell"></button>
+        <button className="cell"> { this.props.value }</button>
     );
   }
 }
