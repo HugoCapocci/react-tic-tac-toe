@@ -18,6 +18,9 @@ export default class Plateau extends React.Component {
       return;
     }
     cases[i] = this.state.xIsNext ? 'X' : 'O';
+    document.getElementById(i).style.cursor = "default";
+
+
     this.setState({
       cases:cases,
       xIsNext: !this.state.xIsNext,
@@ -27,6 +30,7 @@ export default class Plateau extends React.Component {
   renderCase(i) {    
     return (
       <Case
+        id = {i}
         value={this.state.cases[i]}
         onClick={() => this.handleClick(i)}
       />
