@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Cell from './Cell';
 
 class Board extends Component {
   render() {
@@ -8,19 +9,19 @@ class Board extends Component {
       <div className="App">
       <h3>Next Player : X</h3>
         <div>
-            <button class="cell"></button>
-            <button class="cell"></button>
-            <button class="cell"></button>            
+            <Cell/>
+            <Cell/>
+            <Cell/>           
         </div>
         <div>
-            <button class="cell"></button>
-            <button class="cell"></button>
-            <button class="cell"></button>            
+            <Cell/>
+            <Cell/>
+            <Cell/>          
         </div>
         <div>
-            <button class="cell"></button>
-            <button class="cell"></button>
-            <button class="cell"></button>            
+            <Cell/>
+            <Cell/>
+            <Cell/>          
         </div>
       </div>
     );
