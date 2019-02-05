@@ -12,3 +12,11 @@
   text-align: center;
   width: 34px;
 }
+
+.cell:focus {
+  outline: none;
+}
+
+.kbd-navigation .cell:focus {
+  background: #ddd;
+}
