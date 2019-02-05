@@ -9,7 +9,4 @@ export default class SquareComponent extends Component{
             </button>
         );
     }
-
-
-
 }
