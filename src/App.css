@@ -1,16 +1,35 @@
+
+.game {
+    position: absolute;
+    z-index: 15;
+    top: 25%;
+    left: 50%;
+    margin: -100px 0 0 -150px;}
+
+
+
 .cell{
-  background: #fff;
-  border: 1px solid #999;
-  float: left;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 34px;
-  height: 34px;
-  margin-right: -1px;
-  margin-top: -1px;
-  padding: 0;
-  text-align: center;
-  width: 34px;
+
+    border: 1px solid #999;
+    float: left;
+    font-size: 60px;
+    font-family: Ubuntu, sans-serif;
+    color:white;
+    font-weight: bold;
+    line-height: 34px;
+    height: 100px;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    width: 100px;
+    border-radius: 14px;
+    background: #78bec5;
+}
+
+
+.game-info {
+    margin-left: 40px;
 }
 
 .cell:focus {
