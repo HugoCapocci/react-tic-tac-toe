@@ -4,15 +4,36 @@ import './App.css';
 import Cell from './Cell';
 import Button from './Button';
 
+const PLAYER_1 = 'X';
+const PLAYER_2 = 'O';
+
 class Board extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             cells: Array(9).fill(null),
-            player: 'X',
+            player: PLAYER_1
         }
         this.endGame = false;
+    }
+
+    getNextPlayer() {
+        if (this.state.player === PLAYER_1) return PLAYER_2;
+        return PLAYER_1;
+    }
+
+    renderHistory() {
+        const history = this.state.history;
+        return history.map((step, index) => {
+            const desc = index != 0 ?
+                'Go to move #' + index : 'Go to game start';
+            return (
+                <li key={index}>
+                 <button>{desc}</button>
+                </li>
+            );
+        });
     }
 
     handleClick(i) {
@@ -22,12 +43,10 @@ class Board extends Component {
         }
         if (!cells[i]) {
             cells[i] = this.state.player;
-            this.setState({ cells: cells });
-            if (this.state.player == 'X') {
-                this.setState({ player: "O" })
-            } else {
-                this.setState({ player: "X" })
-            }
+            this.setState({ 
+                cells: cells,
+                player: this.getNextPlayer()
+            });
         } else {
             alert('Case déjà cochée');
         }
@@ -37,7 +56,7 @@ class Board extends Component {
         let cells = Array(9).fill(null);
         this.setState({ cells: cells });
         this.endGame = false;
-        this.setState({ player: 'X'})
+        this.setState({ player: PLAYER_1})
     }
 
     calculateWinner(cells) {
@@ -69,13 +88,12 @@ class Board extends Component {
         return true;
     }
 
-    renderCell(i, x) {
+    renderCell(i) {
         return (
             <Cell
-                style={this.state.style}
                 value={this.state.cells[i]}
-                index={x}
-                onClick={() => this.handleClick(x)} />
+                index={i}
+                onClick={() => this.handleClick(i)} />
         );
     }
 
@@ -98,19 +116,19 @@ class Board extends Component {
                 {this.endGame ? <Button onClick={() => this.replay()} /> : null}
                 <br/><br/>
                 <div>
-                    {this.renderCell(0, 0)}
-                    {this.renderCell(1, 1)}
-                    {this.renderCell(2, 2)}
+                    {this.renderCell(0)}
+                    {this.renderCell(1)}
+                    {this.renderCell(2)}
                 </div>
                 <div>
-                    {this.renderCell(3, 3)}
-                    {this.renderCell(4, 4)}
-                    {this.renderCell(5, 5)}
+                    {this.renderCell(3)}
+                    {this.renderCell(4)}
+                    {this.renderCell(5)}
                 </div>
                 <div>
-                    {this.renderCell(6, 6)}
-                    {this.renderCell(7, 7)}
-                    {this.renderCell(8, 8)}
+                    {this.renderCell(6)}
+                    {this.renderCell(7)}
+                    {this.renderCell(8)}
                 </div>
             </div>
         );
