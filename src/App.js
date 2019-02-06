@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './Tic_tac_toe.svg';
 import './App.css';
 import Board from './Board';
 import Cell from './Cell';
@@ -27,13 +27,13 @@ class App extends Component {
 
     handleButtonClick(){
       if(this.state.stylePath == './App2.css'){
-        this.setState({stylePath: './App.css'});
-        this.setState({cssMode: 'Night'});
-        this.setState({icolight: 'moon'});
+        this.setState({stylePath: './App.css',cssMode: 'Night',icolight: 'moon'});
+        // this.setState({cssMode: 'Night'});
+        // this.setState({icolight: 'moon'});
       }else{
-          this.setState({stylePath: './App2.css'});
-          this.setState({cssMode: 'Light'});
-          this.setState({icolight: 'lightbulb'});
+          this.setState({stylePath: './App2.css',cssMode: 'Light',icolight: 'lightbulb'});
+          // this.setState({cssMode: 'Light'});
+          // this.setState({icolight: 'lightbulb'});
       }
 
 
