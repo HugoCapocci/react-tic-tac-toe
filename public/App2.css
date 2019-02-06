@@ -1,6 +1,7 @@
 body {
   font: 14px "Century Gothic", Futura, sans-serif;
   margin: 20px;
+  background-color: black;
 }
 
 ol, ul {
@@ -18,7 +19,7 @@ ol, ul {
 }
 
 .cell {
-  background: black;
+  background: white;
   border: 2px solid #fff;
   border-radius: 50px;
   float: left;
@@ -30,7 +31,7 @@ ol, ul {
   text-align: center;
   width: 100px;
   margin: 3px;
-  color: white;
+  color: black;
 }
 
 .cell:focus {
@@ -46,15 +47,22 @@ ol, ul {
 }
 
 .game-info {
-  margin-left: 540px;
-  margin-top: 20px;
+  margin-left: 560px;
+  margin-top: -20px;
+  color: white;
 }
 
 h1{
   font-size: 40px;
   text-align: center;
+  color: white;
 }
 
 .game-board{
   margin-left: 540px;
+}
+
+.game-night{
+  margin-left: 755px;
+  margin-top: 20px;
 }
