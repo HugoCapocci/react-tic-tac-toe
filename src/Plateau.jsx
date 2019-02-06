@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Case from './Case';
-import index from './index'
+import index from './index';
+import calculateWinner from './history';
 
 export default class Plateau extends React.Component {
   
@@ -13,50 +14,37 @@ export default class Plateau extends React.Component {
   }
 
   handleClick(i) {
-    const cases = this.state.cases.slice();
-
-    if(cases[i] != null){
+    const history = this.state.history;
+    const current = history[history.length - 1];
+    const cases = current.cases.slice();
+    if (calculateWinner(cases) || cases[i]) {
       return;
     }
-    cases[i] = this.state.xIsNext ? 'X' : 'O';
-    document.getElementById(i).style.cursor = "default";
+   
+    cases[i] = this.state.xIsNext ? 'X' : 'O'; 
+    document.getElementById.style.cursor = "default";
 
-
+    
+    
     this.setState({
-      cases:cases,
+      history: history.concat([{
+        casees: cases,
+      }]),
       xIsNext: !this.state.xIsNext,
     });
   }
 
+
   renderCase(i) {    
     return (
       <Case
-        id = {i}
-        value={this.state.cases[i]}
-        onClick={() => this.handleClick(i)}
+        value={this.props.cases[i]}
+        onClick={() => this.props.onClick(i)}
       />
     );
   }
 
-  calculateWinner(cases) {
-    const lines = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6],
-    ];
-    for (let i = 0; i < lines.length; i++) {
-      const [a, b, c] = lines[i];
-      if (cases[a] && cases[a] === cases[b] && cases[a] === cases[c]) {
-        return cases[a];
-      }
-    }
-    return null;
-  }
+
 
   render() {
     const winner = calculateWinner(this.state.cases);
