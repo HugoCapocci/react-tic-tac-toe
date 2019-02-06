@@ -8,7 +8,7 @@ class Square extends Component {
     };
   }
 
-  
+
   render() {
     return (
       <button

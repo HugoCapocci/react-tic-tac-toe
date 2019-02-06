@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Square from './Square';
+import Button from './ButtonReplay';
 
 class Board extends Component {
     constructor(props) {
@@ -26,6 +27,12 @@ class Board extends Component {
         } else {
             alert('Déjà cocher !')
         }
+    }
+
+    replay() {
+        let squares = Array(9).fill(null);
+        this.setState({ squares: squares });
+        this.endGame = false;
     }
 
     calculateWinner() {
@@ -86,7 +93,8 @@ class Board extends Component {
         return (
             <header className="App-header">
                 <h3>{status}</h3>
-                {this.endGame ? <button>Replay</button> : null}
+                {this.endGame ? <Button onClick={() => this.replay()} /> : null}
+                <br></br>
                 <div className="board-row">
                     {this.renderSquare(0)}
                     {this.renderSquare(1)}
