@@ -4,6 +4,25 @@ import Case from './Case';
 import './App.css';
 
 
+function calculateWinner(squares) {
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+    for (let i = 0; i < lines.length; i++) {
+      const [a, b, c] = lines[i];
+      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+        return squares[a];
+      }
+    }
+    return null;
+  }
 export default class Plateau extends Component {
     
     
@@ -14,11 +33,13 @@ export default class Plateau extends Component {
           null, null, null
       ],
       player: 'X',
+      winner: false,
+      status: 'Next Player: X',
     }
     handleClick = (index)  => {
             this.setState(prevState =>{
                 const cells= [...prevState.cells];
-                if(!cells[index]){
+                if(!cells[index] && !this.state.winner){
                     cells[index]= prevState.player;
                     if(prevState.player=="X")
                     {
@@ -28,11 +49,23 @@ export default class Plateau extends Component {
                         this.setState({ player: 'X'});
                     }
                 }
+                const winner = calculateWinner(cells);
+                let status;
+                if (winner) {        
+                    this.setState({ 
+                        winner: true,
+                        status: 'Winner: '+ winner,
+                    });
+                }else {
+                    this.setState({ 
+                        status: 'Next Player: '+ this.state.player,
+                    });
+                }
+
                 return {
                     cells
                 }
-            })
-            
+            })        
     }
     isBoardFull(){
         // to DO
@@ -42,11 +75,12 @@ export default class Plateau extends Component {
         // retourne le gagnant
     }
   render() {  
+    
     return (
         <div className="App">
         
             <header className="App-header">
-                <h2>Next player : { this.state.player }</h2>    
+                <h2>{ this.state.status }</h2>    
                 <div >
                     < Case value={ this.state.cells[0] } handleClick={ () => this.handleClick(0) } />
                     < Case value={ this.state.cells[1] } handleClick={ () => this.handleClick(1) }  />
