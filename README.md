@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Pré-requis
+
+Pour ce projet il faut installer FontAwesome dans le répertoire du projet:
+
+```
+npm i --save @fortawesome/fontawesome-svg-core \
+npm i --save @fortawesome/free-solid-svg-icons \
+npm i --save @fortawesome/react-fontawesome
+```
+
 ## Available Scripts
 
 In the project directory, you can run:

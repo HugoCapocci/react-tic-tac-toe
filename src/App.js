@@ -3,6 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 import Board from './Board';
 import Cell from './Cell';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faLightbulb } from '@fortawesome/free-solid-svg-icons';
+library.add(faMoon)
+library.add(faLightbulb)
 
 class App extends Component {
   constructor(props) {
@@ -14,7 +20,8 @@ class App extends Component {
         stepNumber: 0,
         xIsNext: true,
         stylePath: './App.css',
-        cssMode: 'Night'
+        cssMode: 'Night',
+        icolight: 'moon',
       };
     }
 
@@ -22,9 +29,11 @@ class App extends Component {
       if(this.state.stylePath == './App2.css'){
         this.setState({stylePath: './App.css'});
         this.setState({cssMode: 'Night'});
+        this.setState({icolight: 'moon'});
       }else{
           this.setState({stylePath: './App2.css'});
           this.setState({cssMode: 'Light'});
+          this.setState({icolight: 'lightbulb'});
       }
 
 
@@ -113,7 +122,7 @@ class App extends Component {
        </div>
        <div className="game-night">
        <link rel="stylesheet" type="text/css" href={this.state.stylePath} />
-       <button type="button" onClick={this.handleButtonClick.bind(this)}>{this.state.cssMode} mode</button>
+       <button type="button" onClick={this.handleButtonClick.bind(this)}>{this.state.cssMode} mode <FontAwesomeIcon icon={this.state.icolight} /></button>
        </div>
        <div className="game-info">
          <div>{status}</div>
