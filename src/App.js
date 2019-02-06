@@ -60,6 +60,29 @@ class App extends Component {
     });
   }
 
+  isBoardFull() {
+    return this.state.grid.every(cell => cell != null);
+  }
+
+  getWinner() {
+    const grid = this.state.grid;
+    // 0 == 1 == 2; 3 == 4 == 5; 6 == 7 == 8
+    for (let index = 0; index < 9; index += 3) {
+      if (grid[index] != null && grid[index] === grid[index + 1] && grid[index + 1] === grid[index + 2]) return grid[index];
+    }
+    // 0 == 3 == 6
+    for (let index = 0; index < 9; index += 3) {
+      if (grid[index] != null && grid[index] === grid[index + 3] && grid[index + 3] === grid[index + 6]) return grid[index];
+    }
+
+    if (grid[4] != null && (
+      (grid[0] === grid[4] && grid[4] === grid[8]) ||
+      (grid[2] === grid[4] && grid[4] === grid[6])
+    )) return grid[4];
+
+    return null;
+  }
+
   render() {
 
     const winner = calculateWinner(this.state.cells);
