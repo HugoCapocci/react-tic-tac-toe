@@ -23,6 +23,8 @@ function calculateWinner(squares) {
     }
     return null;
   }
+
+  
 export default class Plateau extends Component {
     
     
@@ -35,6 +37,13 @@ export default class Plateau extends Component {
       player: 'X',
       winner: false,
       status: 'Next Player: X',
+    }
+    refreshPage() {
+        window.location.reload();
+      }
+    isBoardFull = (cells) =>
+    {
+        return cells.every(cell => cell != null);
     }
     handleClick = (index)  => {
             this.setState(prevState =>{
@@ -61,19 +70,21 @@ export default class Plateau extends Component {
                         status: 'Next Player: '+ this.state.player,
                     });
                 }
+                const boardFull= this.isBoardFull(cells);
+                if(boardFull)
+                {
+                    this.setState({ 
+                        winner: true,
+                        status: 'Tableau Complet',
+                    });
+                }
 
                 return {
                     cells
                 }
             })        
     }
-    isBoardFull(){
-        // to DO
-        // renvoyé true si le tableau est full
-    }
-    getWinner(){
-        // retourne le gagnant
-    }
+    
   render() {  
     
     return (
@@ -97,6 +108,7 @@ export default class Plateau extends Component {
                     < Case value={ this.state.cells[8] } handleClick={ () => this.handleClick(8) } />
                 </div>
             </header>
+            < button onClick = {this.refreshPage} > Refresh </button>
       </div>
     );
   }
