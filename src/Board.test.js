@@ -10,25 +10,27 @@ describe('Board tests', () => {
     });
 
 
-    describe('isBoardFull', () => {
+    describe('isEnd', () => {
         it('Should return false at startup', () => {
-            expect(wrapper.instance().isBoardFull()).toBe(false);
+            expect(wrapper.instance().isEnd()).toBe(false);
         });
 
         it('Should return true if board is full', () => {
-            expect(wrapper.instance().isBoardFull()).toBe(true);
+            const array = Array(9).fill('X');
+            wrapper.instance().setState({cells : array});
+            expect(wrapper.instance().isEnd()).toBe(true);
         });
     });
 
     describe('calculateWinner', () => {
-        it('Should return false at startup', () => {
+        it('Should return null at startup', () => {
             const array = Array(9).fill(null);
-            expect(wrapper.instance.calculateWinner(array)).toBe(null);
+            expect(wrapper.instance().calculateWinner(array)).toBe(null);
         });
 
-        it('Should return true is a player win', () => {
+        it('Should return X or O is a player win', () => {
             const array = ['X', 'X', 'X', 'O', 'X', 'O', 'O', 'X', 'O'];
-            expect(wrapper.instance.calculateWinner(array)).toBe(true);
+            expect(wrapper.instance().calculateWinner(array)).toBe('X');
         });
     });
 

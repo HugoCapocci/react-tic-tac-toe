@@ -15,15 +15,6 @@ class Board extends Component {
         this.endGame = false;
     }
 
-    isBoardFull() {
-        this.state.cells.forEach(cell => {
-            if (cell === null) {
-                return false;
-            }
-        });
-        return true;
-    }
-
     handleClick(i) {
         const cells = this.state.cells.slice();
         if (this.calculateWinner(cells)) {
