@@ -31,15 +31,16 @@
   }
 }
 
-.cell {
+.cell{
   background: #fff;
   border: 1px solid #999;
+  float: left;
   font-size: 24px;
   font-weight: bold;
-  line-height: 70px;
+  line-height: 34px;
   height: 70px;
   margin-right: -1px;
-  margin-top: -5px;
+  margin-top: -1px;
   padding: 0;
   text-align: center;
   width: 70px;

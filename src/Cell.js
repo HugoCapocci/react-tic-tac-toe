@@ -14,7 +14,7 @@ class Cell extends Component {
 
     render() {
         return (
-            <button class="cell" onClick= { () => {this.props.onClick() }}>
+            <button className="cell" onClick= { () => {this.props.onClick() }}>
                 {this.props.value}
             </button>
         );
