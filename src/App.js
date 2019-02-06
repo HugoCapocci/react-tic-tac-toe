@@ -2,6 +2,26 @@ import React, { Component } from 'react';
 import './App.css';
 import Case from './Case.js';
 
+function calculateWinner(cells) {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) {
+      return cells[a];
+    }
+  }
+  return null;
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -18,6 +38,9 @@ class App extends Component {
   handleClick = (index) => {
     this.setState(prevState => {
       const cells = [...prevState.cells];
+      if (calculateWinner(cells) || cells[index]) {
+        return;
+      }
       if(!cells[index]) {
         cells[index] = prevState.player;
         if(prevState.player === "X") {
@@ -35,13 +58,22 @@ class App extends Component {
         cells
       }
     });
-}
+  }
 
   render() {
+
+    const winner = calculateWinner(this.state.cells);
+    let status;
+    if (winner) {
+      status = 'Winner: ' + winner + ' !';
+    } else {
+      status = 'Next player: ' + (this.state.player ? 'X' : 'O');
+    }
+
     return (
       <div className="App">
 
-      <h2>Next player: {this.state.player}</h2>
+      <h2>{status}</h2>
 
         <header className="App-header">
 
